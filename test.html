@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Jimmy's Pasta Italian Restaurant</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="icon" type="image/x-icon" href="images/jimmy_logo.jpg">
+<style>
+body, html {height: 100%}
+body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
+.menu {display: none}
+.bgimg {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("images/pizza.jpg");
+  min-height: 90%;
+}
+
+/*accordion*/
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 40px;
+  transition: 0.4s;
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+@media only screen and (max-width: 1000px) {
+	.my_map{
+	display: block; 
+	margin: 0 auto; 
+	width: 300px;
+	height:300px;
+	}
+}
+@media only screen and (min-width: 1000px) {
+	.my_map{
+	display: block; 
+	margin: 0 auto; 
+	width: 600px;
+	height:600px;
+	}
+}
+
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><img draggable="false" src="images/jimmy_logo.jpg" style="width:45px;height:45px;" alt="Jimmy's Pasta"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#menu" style="font-size:40px;text-align:center;">MENU</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#about" style="font-size:40px;text-align:center;">ABOUT</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact" style="font-size:40px;text-align:center;">CONTACT</a>
+        </li>    
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Navbar (sit on top) #f89d1b or rgba(248,157,27,255) color for jimmy pasta orange
+<div class="w3-top w3-hide-small">
+  <div class="w3-bar w3-xlarge w3-black w3-opacity w3-hover-opacity-off" id="myNavbar">
+    <a href="#" class="w3-bar-item w3-button"><img draggable="false" src="images/jimmy_logo.jpg" style="width:40px;height:40px;" alt="Jimmy's Pasta"></a>
+    <a href="#menu" class="w3-bar-item w3-button">MENU</a>
+    <a href="#about" class="w3-bar-item w3-button">ABOUT</a>
+    <a href="#contact" class="w3-bar-item w3-button">CONTACT</a>
+  </div>
+</div>
+-->  
+<!-- Header with image -->
+<header class="bgimg w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-bottomleft w3-padding">
+    <span class="w3-tag w3-xlarge">Open Tuesday - Sunday from 12pm to 1am</span>
+  </div>
+  <div class="w3-display-middle w3-center">
+    <!--<div class="white_box" style="background-color:rgba(0,0,0,40%);padding:30px;margin-bottom:10px;border-radius:10px;">-->
+		<span class="w3-text-white w3-hide-small"> <img draggable="false" src="images/jimmy_logo.jpg" style="width:300px;height:300px;margin-bottom:20px;" alt="JPlogo"></span>
+    <!--</div>-->
+	<span class="w3-text-white w3-hide-large w3-hide-medium"><img draggable="false" src="images/jimmy_logo.jpg" style="width:250px;height:250px;margin-bottom:20px;" alt="JPlogo"></span>
+    <p><a href="#menu" class="w3-button w3-xxlarge w3-black">Let me see the menu</a></p>
+  </div>
+</header>
+
+<!-- Menu Container -->
+<div class="w3-container w3-black w3-padding-64 w3-xxlarge" id="menu">
+  <div class="w3-content">
+  
+    <h1 class="w3-center w3-jumbo" style="margin-bottom:64px">THE MENU</h1>
+    <div class="w3-row w3-center w3-border w3-border-dark-grey">
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Salads');" id="myLink">
+        <div class="w3-col s4 tablink w3-padding-large w3-hover-red">Salads</div>
+      </a>
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Pizza');">
+        <div class="w3-col s4 tablink w3-padding-large w3-hover-red">Pizza</div>
+      </a>
+      <a href="javascript:void(0)" onclick="openMenu(event, 'Pasta');">
+        <div class="w3-col s4 tablink w3-padding-large w3-hover-red">Pasta</div>
+      </a>
+	  <a href="javascript:void(0)" onclick="openMenu(event, 'Sweets');">
+        <div class="w3-col s4 tablink w3-padding-large w3-hover-red">Sweets</div>
+      </a>
+	  <a href="javascript:void(0)" onclick="openMenu(event, 'Drinks');">
+        <div class="w3-col s4 tablink w3-padding-large w3-hover-red">Drinks</div>
+      </a>
+    </div>
+
+    <div id="Salads" class="w3-container menu w3-padding-32 w3-white">
+      <h1><b>Ceasar</b> <span class="w3-right w3-tag w3-dark-grey w3-round">6,70€</span></h1>
+      <p class="w3-text-grey">Crunchy iceberg with chicken, smoked bacon, corn, crouton and authentic Ceasar's dressing</p>
+      <hr>
+   
+      <h1><b>Jimmy's salad</b> <span class="w3-tag w3-red w3-round">Hot!</span><span class="w3-right w3-tag w3-dark-grey w3-round">6,90€</span></h1>
+      <p class="w3-text-grey">Fresh pasta, chicken, crispy bacon, egg, corn and mayo dressing</p>
+      <hr>
+      
+      <h1><b>Traditional</b><span class="w3-right w3-tag w3-dark-grey w3-round">6,70€</span></h1>
+      <p class="w3-text-grey">Cherry tomatoes, barley rusk, feta cheese crumbles, olive oil from Mani and oregano</p>
+    </div>
+
+    <div id="Pizza" class="w3-container menu w3-padding-32 w3-white">
+      <h1><b>Margarita </b> <span class="w3-tag w3-grey w3-round">Popular</span> <span class="w3-right w3-tag w3-dark-grey w3-round">7,50€</span></h1>
+      <p class="w3-text-grey">Tomato sauce, gouda, edam</p>
+      <hr>
+      
+	  <h1><b>Bacon</b> <span class="w3-right w3-tag w3-dark-grey w3-round">8,50€</span></h1>
+      <p class="w3-text-grey">Tomato sauce, gouda, edam, bacon</p>
+      <hr>
+	  
+	  <h1><b>Ham</b><span class="w3-tag w3-grey w3-round">New</span> <span class="w3-right w3-tag w3-dark-grey w3-round">8,50€</span></h1>
+      <p class="w3-text-grey">Tomato sauce, gouda, edam, ham</p>
+      <hr>
+      
+	  <h1><b>Pepperoni</b> <span class="w3-right w3-tag w3-dark-grey w3-round">8,50€</span></h1>
+      <p class="w3-text-grey">Tomato sauce, edam, gouda, pepperoni</p>
+      <hr>
+      
+	  
+	  
+      <h1><b>4 cheese</b> <span class="w3-right w3-tag w3-dark-grey w3-round">9,00€</span></h1>
+      <p class="w3-text-grey">Milk cream, gouda, edam, mozzarella, parmesan</p>
+      <hr>
+
+      <h1><b>Special</b> <span class="w3-right w3-tag w3-dark-grey w3-round">9,50€</span></h1>
+      <p class="w3-text-grey">Tomato sauce, gouda, edam, multicolored peppers, fresh mushroom mix, smoked bacon</p>
+	  
+	  <h1><b>Carbonara</b> <span class="w3-right w3-tag w3-dark-grey w3-round">9,50€</span></h1>
+      <p class="w3-text-grey">Milk cream, gouda, edam, parmesan, smoked bacon</p>
+	  
+	  <h1><b>Spetsofai</b> <span class="w3-right w3-tag w3-dark-grey w3-round">10,50€</span></h1>
+      <p class="w3-text-grey">Tomato sauce, gouda, edam, feta cheese crumbles, multicolored peppers, traditional country sausage</p>
+	  
+	  <h1><b>Con pollo</b> <span class="w3-right w3-tag w3-dark-grey w3-round">11,00€</span></h1>
+      <p class="w3-text-grey">Milk cream, gouda, edam, parmesan, corn, multicolored peppers, chicken</p>
+	  
+	  <h1><b>Tartufo</b> <span class="w3-right w3-tag w3-dark-grey w3-round">11,00€</span></h1>
+      <p class="w3-text-grey">Milk cream, gouda, edam, parmesan, fresh mushroom mix, truffle oil</p>
+	  
+	  <h1><b>Nutella Biscuit </b><span class="w3-tag w3-grey w3-round">New</span> <span class="w3-right w3-tag w3-dark-grey w3-round">9,00€</span></h1>
+      <p class="w3-text-grey">Nutella chocolate, crumbled biscuit</p>
+	  
+	  <h1><b>Bueno oreo </b><span class="w3-tag w3-grey w3-round">New</span> <span class="w3-right w3-tag w3-dark-grey w3-round">9,00€</span></h1>
+      <p class="w3-text-grey">Bueno praline, crumbled oreo biscuit</p>
+	  
+    </div>
+
+<!--Pasta types: Rigatoni, Fusilli and Casarecce-->
+    <div id="Pasta" class="w3-container menu w3-padding-32 w3-white">
+      <h1><b>Beef ragu</b><span class="w3-right w3-tag w3-dark-grey w3-round">8,00€</span></h1>
+      <p class="w3-text-grey">Slow-cooked beef with tomato sauce and fresh spices</p>
+      <hr>
+   
+      <h1><b>Beef stroganoff</b> <span class="w3-right w3-tag w3-dark-grey w3-round">8,00€</span></h1>
+      <p class="w3-text-grey">Tender veal stripes pan-fried in white mushroom sauce</p>
+      <hr>
+      
+      <h1><b>Bolognese</b> <span class="w3-right w3-tag w3-dark-grey w3-round">7,20€</span></h1>
+      <p class="w3-text-grey">Fresh ground beef, cooked in tomato sauce and fresh spices</p>
+      <hr>
+      
+      <h1><b>Con pollo parmessan</b> <span class="w3-right w3-tag w3-dark-grey w3-round">7,50€</span></h1>
+      <p class="w3-text-grey">Chicken breast with multicolored peppers, corn and parmesan powder</p>
+	  <hr>
+	  
+	  <h1><b>Carbonara</b> <span class="w3-right w3-tag w3-dark-grey w3-round">7,00€</span></h1>
+      <p class="w3-text-grey">Smoked bacon, with milk-cream and parmesan powder</p>
+	  <hr>
+	  
+	  <h1><b>Spaghetti with shrimps</b> <span class="w3-right w3-tag w3-dark-grey w3-round">8,00€</span></h1>
+      <p class="w3-text-grey">Ground shrimp, in tomato sauce with fresh spices</p>
+	  <hr>
+	  
+	  <h1><b>Al olio</b> <span class="w3-tag w3-red w3-round">Spicy!</span> <span class="w3-tag w3-green w3-round">Vegan</span> <span class="w3-right w3-tag w3-dark-grey w3-round">5,00€</span></h1>
+      <p class="w3-text-grey">Fresh parsley, garlick, chili flakes and olive oil</p>
+	  <hr>
+	  
+	  <h1><b>Tartufo</b> <span class="w3-right w3-tag w3-dark-grey w3-round">7,00€</span></h1>
+      <p class="w3-text-grey">A variety of fresh mushrooms with spices, truffle oil and parmesan powder</p>
+	  <hr>
+	  
+	  <h1><b>Napolitana </b><span class="w3-tag w3-green w3-round">Vegan</span> <span class="w3-right w3-tag w3-dark-grey w3-round">5,50€</span></h1>
+      <p class="w3-text-grey">Tomato sauce with carots, onion and fresh basil</p>
+	  <hr>
+	  
+	  <h1><b>Amatriciana</b> <span class="w3-tag w3-red w3-round">Spicy!</span><span class="w3-right w3-tag w3-dark-grey w3-round">6,50€</span></h1>
+      <p class="w3-text-grey">Smoked bacon in fresh tomato sauce</p>
+	  <hr>
+	  
+	  <h1><b>Quattro Formaggi</b> <span class="w3-right w3-tag w3-dark-grey w3-round">7,00€</span></h1>
+      <p class="w3-text-grey">White sauce with gouda, edam, mozzarella, parmigiano</p>
+	  <hr>
+	  
+	  <h1><b>Pesto Genovese</b> <span class="w3-right w3-tag w3-dark-grey w3-round">7,00€</span></h1>
+      <p class="w3-text-grey">Fresh basil, pine cone and parmesan</p>
+	  <hr>
+	  
+	  <h1><b>Tomato & olives </b><span class="w3-tag w3-green w3-round">Vegan</span> <span class="w3-right w3-tag w3-dark-grey w3-round">6,30€</span></h1>
+      <p class="w3-text-grey">Tomato sauce with olives & green peppers</p>
+	  <hr>
+	  
+	  <h1><b>Spetsofai</b> <span class="w3-right w3-tag w3-dark-grey w3-round">7,80€</span></h1>
+      <p class="w3-text-grey">Slow-cooked traditional country sausage in tomato sauce with peppers and feta cheese crumbles</p>
+	  <hr>
+	  
+	  <h1><b>Anaka</b> <span class="w3-right w3-tag w3-dark-grey w3-round">8,00€</span></h1>
+      <p class="w3-text-grey">Smoked bacon, chicken breast bites in fresh tomato sauce with milk cream and parmesan powder</p>
+	  <hr>
+	  
+	  <h1><b>Pollo alla cacciatore</b> <span class="w3-right w3-tag w3-dark-grey w3-round">7,50€</span></h1>
+      <p class="w3-text-grey">chicken breast bites with multicolored peppers in tomato sauce with smoked paprika</p>
+	  
+	  
+	  <button class="accordion">Extras</button>
+		<div class="panel">
+		  <table class="table">
+			<thead>
+			  <tr>
+				<th>Ingredient</th>
+				<th>Price</th>
+			  </tr>
+			</thead>
+			<tbody>
+			  <tr>
+				<td>Chicken (breast with smoked paprika and curry)</td>
+				<td>1,10€</td>
+			  </tr>
+			  <tr>
+				<td>Smoked bacon</td>
+				<td>1,00€</td>
+			  </tr>
+			  <tr>
+				<td>Ham</td>
+				<td>1,00€</td>
+			  </tr>
+			  <tr>
+				<td>Pepperoni</td>
+				<td>1,00€</td>
+			  </tr>
+			  <tr>
+				<td>Fresh mushrooms</td>
+				<td>1,00€</td>
+			  </tr>
+			  <tr>
+				<td>Corn</td>
+				<td>0,80€</td>
+			  </tr>
+			  <tr>
+				<td>Olives</td>
+				<td>0,90€</td>
+			  </tr>
+			  <tr>
+				<td>Multicolored peppers</td>
+				<td>0,90€</td>
+			  </tr>
+			  <tr>
+				<td>Cherry tomatoes</td>
+				<td>1,00€</td>
+			  </tr>
+			  <tr>
+				<td>Feta cheese crumbles</td>
+				<td>1,00€</td>
+			  </tr>
+			  <tr>
+				<td>Truffle oil</td>
+				<td>1,00€</td>
+			  </tr>
+			  <tr>
+				<td>Milk cream</td>
+				<td>1,10€</td>
+			  </tr>
+			  <tr>
+				<td>Napolitana sauce</td>
+				<td>1,00€</td>
+			  </tr>
+			  <tr>
+				<td>Dip parmesan</td>
+				<td>0,50€</td>
+			  </tr>
+			  <tr>
+				<td>Extra Spicy</td>
+				<td>0,00€</td>
+			  </tr>
+			</tbody>
+		  </table>
+		</div>
+	  
+    </div>
+
+	
+	<div id="Sweets" class="w3-container menu w3-padding-32 w3-white">
+      <h1><b>Tiramisu </b><span class="w3-tag w3-grey w3-round">New</span><span class="w3-right w3-tag w3-dark-grey w3-round">3,50€</span></h1>
+      <p class="w3-text-grey">Mascarpone cream scented with espresso and cacao</p>
+      <hr>
+   
+      <h1><b>Chocolate mousse </b><span class="w3-tag w3-grey w3-round">New</span> <span class="w3-right w3-tag w3-dark-grey w3-round">3,50€</span></h1>
+      <p class="w3-text-grey">Chocolate mousse with cinamon crumble</p>
+      <hr>
+      
+	  <h1><b>Frozen Cheesecake </b><span class="w3-tag w3-grey w3-round">New</span> <span class="w3-right w3-tag w3-dark-grey w3-round">3,50€</span></h1>
+      <p class="w3-text-grey">Philadelphia cream with biscuit base and red forest fruits sauce</p>
+      
+	
+    </div>
+	
+	
+	<div id="Drinks" class="w3-container menu w3-padding-32 w3-white">
+      <h1><b>Water 500ml </b><span class="w3-right w3-tag w3-dark-grey w3-round">0,50€</span></h1>
+      <hr>
+   
+      <h1><b>Coca cola 330ml</b><span class="w3-right w3-tag w3-dark-grey w3-round">1,50€</span></h1>
+      <p class="w3-text-grey"> Regular, Zero, Light</p>
+	  <hr>
+      
+	  <h1><b>Fanta 330ml</b><span class="w3-right w3-tag w3-dark-grey w3-round">1,50€</span></h1>
+      <p class="w3-text-grey"> Orange, Blue, Lemon</p>
+	  <hr>
+	  
+	  <h1><b>Sprite 330ml </b><span class="w3-right w3-tag w3-dark-grey w3-round">1,50€</span></h1>
+      <hr>
+	  
+	  <h1><b>Schweppes 330ml </b><span class="w3-right w3-tag w3-dark-grey w3-round">1,90€</span></h1>
+      <p class="w3-text-grey"> Orangeade, Pink Grapefruit, Soda Water, Soda Lemon</p>
+	  <hr>
+	  
+	  <h1><b>Amita Motion 330ml </b><span class="w3-right w3-tag w3-dark-grey w3-round">1,80€</span></h1>
+      <hr>
+	  
+	  <h1><b>Alfa Beer 330ml </b><span class="w3-right w3-tag w3-dark-grey w3-round">2,00€</span></h1>
+      <hr>
+	  
+	  <h1><b>Amstel Beer 330ml </b><span class="w3-right w3-tag w3-dark-grey w3-round">2,00€</span></h1>
+      <hr>
+	  
+	  <h1><b>Fix Beer 330ml </b><span class="w3-right w3-tag w3-dark-grey w3-round">2,00€</span></h1>
+      <hr>
+	  
+	  <h1><b>Keiser Beer 330ml </b><span class="w3-right w3-tag w3-dark-grey w3-round">2,50€</span></h1>
+      <hr>
+	  
+	  <h1><b>Mamos Beer 330ml </b><span class="w3-right w3-tag w3-dark-grey w3-round">2,50€</span></h1>
+      <hr>
+	  
+	  <h1><b>Red/White Wine 187ml </b><span class="w3-right w3-tag w3-dark-grey w3-round">3,50€</span></h1>
+      
+	  	  
+    </div>
+	</br>
+
+  </div>
+</div>
+
+<!-- About Container -->
+<div class="w3-container w3-padding-64 w3-red w3-grayscale w3-xlarge" id="about">
+  <div class="w3-content">
+    <h1 class="w3-center w3-jumbo" style="margin-bottom:64px">About</h1>
+    <p>Nestled along the sun-kissed shores of Anavissos, our Italian restaurant brings the heart of Italy to the Greek seaside. With breathtaking views of the Aegean and the aroma of fresh herbs and wood-fired pizza in the air, we offer a warm, relaxed atmosphere perfect for savoring authentic Italian flavors. From handcrafted pasta to seafood risottos inspired by local catches, every dish is made with love, tradition, and the finest ingredients. Whether you're joining us for a romantic dinner or a family gathering by the sea, we invite you to experience a true taste of Italy—right here on the coast of Greece.</p>
+    
+    
+    <img src="images/indoor.jpg" style="width:40%" class="w3-margin-top w3-margin-bottom" alt="Restaurant">
+    <img src="images/outdoor.jpg" style="width:57%" class="w3-margin-top w3-margin-bottom" alt="Restaurant">
+	<h1><b>Opening Hours</b></h1>
+    
+    <div class="w3-row">
+      <div class="w3-col s6">
+        <p>Monday CLOSED</p>
+		<p>Tuesday - Sunday <br>from 12:00pm to 01:00am</p>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+
+
+<!-- Contact -->
+<div class="w3-container w3-padding-64 w3-blue-grey w3-grayscale-min w3-xlarge" id="contact">
+  <div class="w3-content">
+    <h1 class="w3-center w3-jumbo" style="margin-bottom:64px">Contact</h1>
+    <p>Find us at <b>Leoforos Athinon Souniou 19, Anavyssos 19013</b> or call us at <b>2291152168</b></p>
+    <p><span class="w3-tag">FYI!</span> We are also active in <b>efood</b>.</p>
+    <div style=""><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5307.477847598942!2d23.945193084394315!3d37.72331103737132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a1ed0e417deb53%3A0xd3d06eebb1576bc4!2sJimmy&#39;s%20Pasta!5e0!3m2!1sel!2sgr!4v1752754026962!5m2!1sel!2sgr" class="my_map" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-48 w3-xxlarge">
+  <p>Copyright 2025 Jimmy's Pasta. All rights reserved.</a></p>
+</footer>
+
+<script>
+// Tabbed Menu
+function openMenu(evt, menuName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("menu");
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+     tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+  }
+  document.getElementById(menuName).style.display = "block";
+  evt.currentTarget.firstElementChild.className += " w3-red";
+}
+document.getElementById("myLink").click();
+</script>
+
+<!--Accordion-->
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+
+
+</body>
+</html>
